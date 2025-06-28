@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neural Style Transfer Web App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 50px;}
+        .container { background: white; border-radius: 10px; padding: 20px; width: 400px; margin: auto;}
+        h1 { text-align: center; }
+        input[type="file"] { margin: 10px 0; }
+        .result-img { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neural Style Transfer</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label>Content Image:</label><br>
+            <input type="file" name="content" accept="image/*" required><br>
+            <label>Style Image:</label><br>
+            <input type="file" name="style" accept="image/*" required><br>
+            <input type="submit" value="Stylize" style="margin-top: 10px;">
+        </form>
+        {% if styled_image_path %}
+            <h3>Result:</h3>
+            <img class="result-img" src="{{ styled_image_path }}" alt="Styled Output">
+            <br>
+            <a href="{{ styled_image_path }}" download>Download Result</a>
+        {% endif %}
+    </div>
+</body>
+</html>
